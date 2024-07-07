@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 for more information on allauth,see
 https://docs.allauth.org/en/latest/installation/quickstart.html
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'allauth.account', # the app that allows basic user account stuff like logging in and out, user registration and password reset.
      # Optional -- requires install using `django-allauth[socialaccount]`. It specifically handles logging in via social media accounts.
     'allauth.socialaccount',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,12 @@ ROOT_URLCONF = 'boutique_ado.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # joins all templates
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR,'templates','allauth')
+
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
