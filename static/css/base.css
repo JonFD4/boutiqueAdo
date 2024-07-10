@@ -47,12 +47,16 @@ body{
     color: white;
 }
 
-.text-black {
+ .text-black {
     color: #000 !important;
 }
 
 .border-black {
     border: 1px solid black !important;
+}
+
+#delivery-banner > .bg-black{
+    background: #000 !important;
 }
 /* -------------------------------- Media Queries */
 
