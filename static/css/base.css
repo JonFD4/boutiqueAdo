@@ -1,32 +1,32 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
-html{
-    height:100%;
+html {
+    height: 100%;
 }
-body{
+
+body {
     background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: calc(100vh-164px);
-    color:#555;
+    height: calc(100vh - 164px);
+    color: #555;
     font-family: 'Lato';
-   
 }
 
-/*from Bulma*/
-.icon{
+/* from Bulma */
+.icon {
     align-items: center;
     display: inline-flex;
     justify-content: center;
-    height:1.5rem;
-    width:1.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
 }
-.logo-font{
+
+.logo-font {
     text-transform: uppercase;
 }
-.main-logo-link{
-    width:fit-content; /* make sure logo takes up as much space as the text requires*/
+
+.main-logo-link {
+    width: fit-content;
 }
+
 .shop-now-button {
     background: black;
     color: white;
@@ -37,6 +37,7 @@ body{
     background: black;
     color: white;
 }
+
 .btn-outline-black {
     background: white;
     color: black !important; /* use important to override link colors for <a> elements */
@@ -50,7 +51,6 @@ body{
     color: white !important;
 }
 
-
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
@@ -61,7 +61,7 @@ body{
     color: white;
 }
 
- .text-black {
+.text-black {
     color: #000 !important;
 }
 
@@ -69,38 +69,39 @@ body{
     border: 1px solid black !important;
 }
 
-#delivery-banner > .bg-black{
+.bg-black {
     background: #000 !important;
 }
 
-.overlay{
-    width:100%;
-    height:100%;
-    position: fixed;
-    top:0;
-    left:0;
-    background: white;
-    z-index:-1;
-   
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
 }
-a.category-badge > span.badge:hover{
+
+a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
-
-
 }
 
-div.btt-button{
-    height:42px;
-    width:42px;
-    position:fixed;
-    bottom:10px;
-    right:10px;
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
 
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
 }
-a.btt-link, a.update-link, a.remove-item{
-    cursor:pointer;
-}
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
@@ -118,29 +119,88 @@ a.btt-link, a.update-link, a.remove-item{
     height: 2px;
 }
 
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* Convenience classes - colors copied from Bootstrap */
+.arrow-primary {
+    border-bottom-color: #007bff !important;
+}
+
+.arrow-secondary {
+    border-bottom-color: #6c757d !important;
+}
+
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
+.arrow-light {
+    border-bottom-color: #f8f9fa !important;
+}
+
+.arrow-dark {
+    border-bottom-color: #343a40 !important;
+}
+
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
-    .container {
-      max-width: 80%;
+  .container {
+    max-width: 80%;
+  }
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
     }
-  }
-  
-  /* fixed top navbar only on medium and up */
-  @media (min-width: 992px) {
-      .fixed-top-desktop-only {
-          position: fixed;
-          top: 0;
-          right: 0;
-          left: 0;
-          z-index: 1030;
-      }
-/* pushes the body down to the bottom of the main page header.*/
-      .header-container {
-          padding-top: 164px;
-      }
-      body{
-        height:calc(100vh - 116px);
-      }
-  }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
+
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px);
+    }
+}
