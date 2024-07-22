@@ -6,26 +6,43 @@ def view_bag(request):
     """
     return render(request, 'bag/bag.html')
 
+
 def add_to_bag(request, item_id):
     # Retrieve the quantity from the POST data and convert it to an integer
-    quantity = int(request.POST.get('quantity'))
+  
+    quantity = int(request.POST.get('quantity', 0))
+    size = None
     # Retrieve the redirect URL from the POST data
     redirect_url = request.POST.get('redirect_url')
+    
+    # Check if the product size is included in the POST 
+    if 'product_size' in request.POST:
+        size = request.POST['product_size']
+    
     # Retrieve the current shopping bag from the session, or initialize as an empty dictionary if not present
     bag = request.session.get('bag', {})
 
-    # Check if the item is already in the bag
-    if item_id in list(bag.keys()):
-        # If it is, increase the quantity by the specified amount
-        bag[item_id] += quantity
+    if size:
+        if item_id in list(bag.keys()):
+            if size in bag[item_id]['items_by_size'].keys():
+                bag[item_id]['items_by_size'][size] += quantity
+               
+            else:
+                bag[item_id]['items_by_size'][size] = quantity
+        else:
+            bag[item_id] = {'items_by_size': {size: quantity}}
     else:
-        # If not, add the item to the bag with the specified quantity
-        bag[item_id] = quantity
-
+        if item_id in list(bag.keys()):
+            bag[item_id] += quantity
+        else:
+            bag[item_id] = quantity
+            
     # Update the session with the modified bag
     request.session['bag'] = bag
+    
     # Redirect the user to the specified URL
     return redirect(redirect_url)
+
 
 
 

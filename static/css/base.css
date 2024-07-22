@@ -98,7 +98,7 @@ div.btt-button{
     right:10px;
 
 }
-a.btt-link{
+a.btt-link, a.update-link, a.remove-item{
     cursor:pointer;
 }
 /* -------------------------------- Media Queries */
